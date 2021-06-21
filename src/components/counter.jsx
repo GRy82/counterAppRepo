@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 class Counter extends Component {
     state = {
-        count: 1
+        count: 1,
+        tags: [ 'tag1', 'tag2', 'tag3' ]
     }
 
     render() { 
@@ -10,11 +11,14 @@ class Counter extends Component {
         <React.Fragment>
             <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
             <button className='btn btn-secondary btn-sm'>Increment</button>
+            <ul>
+                {this.state.tags.map(tag => <li key={tag}>{ tag }</li>)}
+            </ul>
         </React.Fragment>
         );
     }
 
-    
+
     getBadgeClasses(){
         let classes = "m-2 badge bg-";
         classes += (this.state.count === 0) ? "warning" : "primary";
